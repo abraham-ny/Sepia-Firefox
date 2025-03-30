@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Nostalgia Theme Options</title>
+  <style>
+    body {
+        font-family: 'Caslon Antique', serif !important;
+      padding: 15px;
+      background: #f5f3ed;
+      color: #5a4e3c;
+      max-width: 320px;
+    }
+    h2 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+    label {
+      display: block;
+      margin: 8px 0;
+    }
+    .slider-container {
+      margin: 12px 0;
+    }
+    input[type="range"] {
+      width: 100%;
+    }
+    .whitelist-container {
+      margin: 12px 0;
+      border-top: 1px solid #ccc;
+      padding-top: 10px;
+    }
+    .whitelist-container h3 {
+      margin-top: 0;
+      font-size: 16px;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 10px 0;
+      max-height: 100px;
+      overflow-y: auto;
+    }
+    li {
+      margin: 4px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #fff;
+      padding: 4px 8px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    button, .remove-btn {
+      background-color: #704214;
+      color: #fff;
+      border: none;
+      padding: 4px 8px;
+      cursor: pointer;
+      border-radius: 4px;
+      font-size: 12px;
+    }
+    button:hover, .remove-btn:hover {
+      background-color: #583517;
+    }
+    #saveBtn {
+      width: 100%;
+      margin-top: 10px;
+      padding: 8px;
+    }
+    .add-whitelist {
+      display: flex;
+      margin-top: 8px;
+    }
+    .add-whitelist input {
+      flex: 1;
+      padding: 4px;
+      border: 1px solid #ddd;
+      border-radius: 4px 0 0 4px;
+      font-size: 14px;
+    }
+    .add-whitelist button {
+      border-radius: 0 4px 4px 0;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Nostalgia Theme Options</h2>
+  <label>
+    <input type="checkbox" id="sepiaImages">
+    Apply Sepia Filter to Images
+  </label>
+  <label>
+    <input type="checkbox" id="textGlow">
+    Apply Text Glow & Change Font Color
+  </label>
+  <div class="slider-container">
+    <label for="glowIntensity">Text Glow Intensity: <span id="glowValue">5</span></label>
+    <input type="range" id="glowIntensity" min="1" max="20" value="5">
+  </div>
+  <label>
+    <input type="checkbox" id="pageTheme">
+    Apply Sepia Theme to Page Background
+  </label>
+
+  <div class="whitelist-container">
+    <h3>Whitelist Domains</h3>
+    <ul id="whitelist"></ul>
+    <div class="add-whitelist">
+      <input type="text" id="newDomain" placeholder="Add domain (e.g., example.com)">
+      <button id="addDomainBtn">Add</button>
+    </div>
+  </div>
+
+  <button id="saveBtn">Save Settings</button>
+  <script src="popup.js"></script>
+</body>
+</html>
