@@ -1,8 +1,3 @@
-// Add this polyfill at the top of your scripts
-if (typeof browser === "undefined") {
-  var browser = chrome;
-}
-
 // Save all settings (toggles, slider, and whitelist) to chrome.storage.sync
 document.getElementById('saveBtn').addEventListener('click', () => {
     const settings = {

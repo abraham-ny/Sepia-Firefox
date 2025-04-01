@@ -5,7 +5,7 @@
     "description": "Adds a sepia filter to images, text glow with vintage font styling.",
     "permissions": ["storage", "tabs"],
     "background": {
-        "scripts": ["background.js"] // Replace "service_worker" with "scripts" for Firefox
+        "scripts": ["background.js"]
     },
     "action": {
         "default_popup": "popup.html",
