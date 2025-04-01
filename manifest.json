@@ -1,27 +1,46 @@
 {
-    "manifest_version": 3,
-    "name": "Nostalgia Sepia Theme",
-    "version": "1.1",
-    "description": "Adds a sepia filter to images, text glow with vintage font styling.",
-    "permissions": ["storage", "tabs"],
-    "background": {
-        "scripts": ["background.js"]
-    },
-    "action": {
-        "default_popup": "popup.html",
-        "default_icon": "icon.png"
-    },
-    "content_scripts": [
-        {
-            "matches": ["<all_urls>"],
-            "js": ["content.js"],
-            "run_at": "document_idle"
-        }
-    ],
-    "web_accessible_resources": [
-        {
-            "resources": ["caslon-antique.woff2"],
-            "matches": ["<all_urls>"]
-        }
+  "manifest_version": 3,
+  "name": "Nostalgia Sepia Theme",
+  "version": "1.1",
+  "description": "Adds a sepia filter to images, text glow with vintage font styling.",
+  "permissions": [
+    "storage",
+    "tabs"
+  ],
+  "background": {
+    "scripts": [
+      "background.js"
     ]
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "icon.png"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "sepia-ff@moruri.an",
+      "strict_min_version": "109.0"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "caslon-antique.woff2"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ]
 }
