@@ -3,25 +3,25 @@
     "name": "Nostalgia Sepia Theme",
     "version": "1.1",
     "description": "Adds a sepia filter to images, text glow with vintage font styling.",
-    "permissions": ["storage", "scripting", "tabs"],
+    "permissions": ["storage", "tabs"],
     "background": {
-    "service_worker": "background.js"
-  	},
+        "scripts": ["background.js"] // Replace "service_worker" with "scripts" for Firefox
+    },
     "action": {
-      "default_popup": "popup.html",
-      "default_icon": "icon.png"
+        "default_popup": "popup.html",
+        "default_icon": "icon.png"
     },
     "content_scripts": [
-      {
-        "matches": ["<all_urls>"],
-        "js": ["content.js"],
-        "run_at": "document_idle"
-      }
+        {
+            "matches": ["<all_urls>"],
+            "js": ["content.js"],
+            "run_at": "document_idle"
+        }
     ],
     "web_accessible_resources": [
-      {
-        "resources": ["caslon-antique.woff2"],
-        "matches": ["<all_urls>"]
-      }
+        {
+            "resources": ["caslon-antique.woff2"],
+            "matches": ["<all_urls>"]
+        }
     ]
-  }
+}

@@ -1,3 +1,8 @@
+// Add this polyfill at the top of your scripts
+if (typeof browser === "undefined") {
+  var browser = chrome;
+}
+
 // Inject the @font-face rule to load the bundled vintage font
 const fontFaceStyle = document.createElement('style');
 fontFaceStyle.textContent = `
