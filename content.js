@@ -21,7 +21,7 @@ chrome.storage.sync.get(
     const defaults = {
       sepiaImages: true,
       textGlow: true,
-      glowIntensity: 5,
+      glowIntensity: 1, // Changed default to 1
       pageTheme: true,
       whitelist: []
     };
