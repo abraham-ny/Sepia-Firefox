@@ -17,16 +17,26 @@ const currentHost = window.location.hostname.toLowerCase();
 chrome.storage.sync.get(
   ['sepiaImages', 'textGlow', 'glowIntensity', 'pageTheme', 'whitelist'],
   (result) => {
+    // Set default values
+    const defaults = {
+      sepiaImages: true,
+      textGlow: true,
+      glowIntensity: 5,
+      pageTheme: true,
+      whitelist: []
+    };
+
+    const settings = { ...defaults, ...result };
+
     // Check whitelist: if current domain is in the whitelist, do nothing.
-    const whitelist = result.whitelist || [];
+    const whitelist = settings.whitelist;
     if (whitelist.some(domain => currentHost.includes(domain.toLowerCase()))) {
-      // Skip applying styles if site is whitelisted
       return;
     }
 
     let cssRules = '';
 
-    if (result.sepiaImages) {
+    if (settings.sepiaImages) {
       cssRules += `
         img {
           filter: sepia(100%) !important;
@@ -34,8 +44,8 @@ chrome.storage.sync.get(
       `;
     }
 
-    if (result.textGlow) {
-      const intensity = result.glowIntensity || 5;
+    if (settings.textGlow) {
+      const intensity = settings.glowIntensity;
       cssRules += `
         body, p, span, h1, h2, h3, h4, h5, h6, a {
           color: #704214 !important;
@@ -45,7 +55,7 @@ chrome.storage.sync.get(
       `;
     }
 
-    if (result.pageTheme) {
+    if (settings.pageTheme) {
       cssRules += `
         body {
           background: #f5f3ed !important;

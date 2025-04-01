@@ -58,14 +58,27 @@ document.getElementById('saveBtn').addEventListener('click', () => {
     chrome.storage.sync.get(
       ['sepiaImages', 'textGlow', 'glowIntensity', 'pageTheme', 'whitelist'],
       (result) => {
-        document.getElementById('sepiaImages').checked = result.sepiaImages || false;
-        document.getElementById('textGlow').checked = result.textGlow || false;
-        document.getElementById('pageTheme').checked = result.pageTheme || false;
-        document.getElementById('glowIntensity').value = result.glowIntensity || 5;
-        document.getElementById('glowValue').textContent = result.glowIntensity || 5;
-        whitelistDomains = result.whitelist || [];
+        // Set default values if not already stored
+        const defaults = {
+          sepiaImages: true,
+          textGlow: true,
+          glowIntensity: 5,
+          pageTheme: true,
+          whitelist: []
+        };
+
+        const settings = { ...defaults, ...result };
+
+        document.getElementById('sepiaImages').checked = settings.sepiaImages;
+        document.getElementById('textGlow').checked = settings.textGlow;
+        document.getElementById('pageTheme').checked = settings.pageTheme;
+        document.getElementById('glowIntensity').value = settings.glowIntensity;
+        document.getElementById('glowValue').textContent = settings.glowIntensity;
+        whitelistDomains = settings.whitelist;
         renderWhitelist();
+
+        // Save defaults if this is the first load
+        chrome.storage.sync.set(settings);
       }
     );
   });
-  
